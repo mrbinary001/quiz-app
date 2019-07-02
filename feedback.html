@@ -22,7 +22,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="quiz.html">Quiz</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
-                    <li><a href="results.html">Results</a></li>
+                    <li><a href="Results.html">Results</a></li>
                 </ul>
             </nav>
             <!--For wireframe purposes only-->
@@ -31,23 +31,23 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur architecto quod nobis a, incidunt eum dolorem iusto modi temporibus numquam ipsa placeat facere aspernatur blanditiis perspiciatis minima. Vero, inventore quaerat?</p>
         </section>
         <form role="form" id="quiz" method="GET" action="">
-        <!--<section>
+        <section>
                 <label for="opt-a">Choice A</label>
                 <input id="opt-a" type="radio" name="quiz-question"/>
             </section>
             <section>
-                <label for="opt-b">Choice B</label>
+                <label for="opt-b" class="correct">Choice B (Correct Answer)</label>
                 <input id="opt-b" type="radio" name="quiz-question"/>
             </section>
             <section>
-                <label for="opt-c">Choice C</label>
-                <input id="opt-c" type="radio" name="quiz-question"/>
+                <label for="opt-c" class="wrong">Choice C (Wrong Answer)</label>
+                <input id="opt-c" type="radio" name="quiz-question" checked/>
             </section>
             <section>
                 <label for="opt-d">Choice D</label>
                 <input id="opt-d" type="radio" name="quiz-question"/>
-            </section>-->
-            <button type="submit">Begin</button>
+            </section>
+            <button type="submit">Next</button>
         </form>
     </main>
     <script src="index.js" type="text/javascript"></script>

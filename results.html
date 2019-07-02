@@ -11,11 +11,7 @@
 <body>
     <main role="main">
         <header role="banner">
-            <h1>'Friends' Quiz</h1>
-            <section class="user-data">
-                <p class="progress">0 out of 10 Questions</p>
-                <p class="score">0%</p>
-            </section>
+            <h1 class="results">'Friends' Quiz</h1>
             <!--For wireframe purposes only-->
             <nav>
                 <ul>
@@ -27,8 +23,9 @@
             </nav>
             <!--For wireframe purposes only-->
         </header>
-        <section class="question-view">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur architecto quod nobis a, incidunt eum dolorem iusto modi temporibus numquam ipsa placeat facere aspernatur blanditiis perspiciatis minima. Vero, inventore quaerat?</p>
+        <section class="question-view final-results">
+                <p class="progress">10 out of 10 Questions</p>
+                <p class="score">60% (6 correct 4 incorrect)</p>
         </section>
         <form role="form" id="quiz" method="GET" action="">
         <!--<section>
@@ -47,7 +44,7 @@
                 <label for="opt-d">Choice D</label>
                 <input id="opt-d" type="radio" name="quiz-question"/>
             </section>-->
-            <button type="submit">Begin</button>
+            <button type="submit">Retry</button>
         </form>
     </main>
     <script src="index.js" type="text/javascript"></script>
