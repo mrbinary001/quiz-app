@@ -72,9 +72,8 @@
     function displayWelcomeScreen(){
         //this function will display the appropriate quiz name
         //along with the welcome message with the quiz name DOM 
-        console.log('displayWelcomeScreen ran');
        
-        let welcomeMessage = `Welcome to the ${quiz.name} quiz. Please press the button below to begin the quiz`;
+        let welcomeMessage = `Welcome to the ${quiz.name} quiz.</br> Are you ready to test your knowledge of this popular TV Series? If so, hit the button below to get started.`;
 
         $('.quiz-name').text(`${quiz.name} Quiz`);
         $('.display').html(`
@@ -83,7 +82,8 @@
             </section>
             <form role="form" id="welcome">
                 <button type="submit">Begin</button>
-            </form>`);
+            </form>`
+        );
 
             $('.display').on('submit', '#welcome', function(evt){
                 evt.preventDefault();
@@ -93,7 +93,6 @@
 
     function displayChoices(){
         //this function will display the appropriate answer options for the question displayed
-        console.log('displayChoices ran');
         let choices = quiz.questions[playerStats.question].choices;
         let choicesDisplay = "";
 
@@ -111,15 +110,16 @@
     
     function displayQuestion(){
         //this function will display each question
-        console.log('displayQuestion ran');
-
+        displayUserStats();
         $('.display').html(`
         <section class="display-view">
             <p class="display-text">${quiz.questions[playerStats.question].question}</p>
         </section>
         <form role="form" id="quiz">
+        <fieldset>
             ${displayChoices(playerStats.question)}
-            <button type="submit" class="submit">Submit</button>
+        </fieldset>
+        <button type="submit">Submit</button>
         </form>`);
         
         $('#quiz').on('submit', function(evt){
@@ -127,18 +127,16 @@
             $('input').filter(function(index,element){
                 if($(element).prop("checked")){
                     displayFeedback();
+                    $('input').each(function(index,element){
+                        $(element).prop('disabled', true);
+                    });
                 } 
-            });
-
-            $('input').each(function(index,element){
-                $(element).prop('disabled', true);
             });
         });
     }
 
     function nextQuestion(){
-        let quizLength = quiz.questions.length;
-        if(playerStats.question < (quizLength - 1)){
+        if(playerStats.question < (quiz.questions.length - 1)){
             playerStats.updateQuestion();
             displayQuestion();
         }else{
@@ -148,7 +146,6 @@
 
     function displayFeedback(){
         //this function will provide feedback to the user on if they selected the correct answer or not
-        console.log('displayFeedback ran');
         let answerIndex = quiz.questions[playerStats.question].answerIndex;
         let choices = $('input');
         let selectedAnswer;
@@ -162,18 +159,19 @@
 
         $('input').each(function(index,element){
             if(index === answerIndex){
-                $(element).prev().addClass('correct');
+                $(element).parent().addClass('correct');
             }
 
             if(selectedAnswer === index && index !== answerIndex){
-                $(element).prev().addClass('incorrect');
+                $(element).parent().addClass('incorrect');
             }
         });
 
         $('button').remove();
         $('#quiz').append(`<button type="submit" class="submit">Next</button>`);
+        $('form').attr('id','feedback');
 
-        $('#quiz').on('submit', function(evt){
+        $('#feedback').on('submit', function(evt){
             evt.preventDefault();  
 
             $('input').each(function(index,element){
@@ -186,30 +184,30 @@
                 }
             });
 
-            displayUserStats();
+            //displayUserStats();
             nextQuestion();
         });
     }
     
     function displayUserStats(){
         //this function will display the users stats to the DOM
-        console.log('displayUserStats ran');
         const numberOfQuestions = quiz.questions.length;
 
-        $('.progress').text(`${playerStats.question + 1} out of ${numberOfQuestions}`);
-        $('.score').text(`${((playerStats.correct/(playerStats.question + 1)) * 100).toFixed(2)}% (${playerStats.correct} correct and ${playerStats.incorrect} incorrect)`);
+        $('.progress').text(`Question: ${playerStats.question + 1} of ${numberOfQuestions}`);
+        $('.score').text(`${((playerStats.correct/(playerStats.question + 1)) * 100).toFixed(2)}% (${playerStats.correct} correct, ${playerStats.incorrect} incorrect)`);
     }
     
     function displayFinalStatsView(){
         //this function will display the users final stats to the DOM
-        console.log('displayFinalStatsView ran');
         
         let totalNumberOfQuestions = quiz.questions.length;
         let score = (playerStats.correct/(playerStats.question + 1)) * 100;
 
+        $('.user-data').remove();
+
         $('.display').html(`
-            <section class="display-view">
-                <p class="display-questionInfo">${totalNumberOfQuestions} out of ${totalNumberOfQuestions}</p>
+            <section class="final-view">
+                <p class="display-questionInfo">Questions: ${totalNumberOfQuestions} out of ${totalNumberOfQuestions}</p>
                 <p class="display-score">Score: ${score.toFixed(2)}%</p>
                 <p class="display-totalCorrect">Total Correct: ${playerStats.correct}</p>
                 <p class="display-totalIncorrect">Total Inccorrect: ${playerStats.incorrect}</p>
@@ -218,11 +216,6 @@
                 <button type="submit">Retry</button>
             </form>
         `);
-
-        $('#retry').on('submit', function(evt){
-            evt.preventDefault();  
-            displayWelcomeScreen();
-        });
     }
 
     function handleQuizzes(){
