@@ -98,7 +98,7 @@
 
         for(let i = 0; i < choices.length; i++){
             choicesDisplay += `
-            <section>
+            <section class="choice">
                 <label for="opt-${i+1}">${choices[i]}</label>
                 <input id="opt-${i+1}" type="radio" name="quiz-question"/>
             </section>
@@ -194,21 +194,20 @@
         const numberOfQuestions = quiz.questions.length;
 
         $('.progress').text(`Question: ${playerStats.question + 1} of ${numberOfQuestions}`);
-        $('.score').text(`${((playerStats.correct/(playerStats.question + 1)) * 100).toFixed(2)}% (${playerStats.correct} correct, ${playerStats.incorrect} incorrect)`);
+        $('.score').text(`Score: (${playerStats.correct} correct, ${playerStats.incorrect} incorrect)`);
     }
     
     function displayFinalStatsView(){
         //this function will display the users final stats to the DOM
         
         let totalNumberOfQuestions = quiz.questions.length;
-        let score = (playerStats.correct/(playerStats.question + 1)) * 100;
 
         $('.user-data').remove();
 
         $('.display').html(`
             <section class="final-view">
                 <p class="display-questionInfo">Questions: ${totalNumberOfQuestions} out of ${totalNumberOfQuestions}</p>
-                <p class="display-score">Score: ${score.toFixed(2)}%</p>
+                <p class="display-score">Score: ${playerStats.correct/quiz.questions.length}%</p>
                 <p class="display-totalCorrect">Total Correct: ${playerStats.correct}</p>
                 <p class="display-totalIncorrect">Total Inccorrect: ${playerStats.incorrect}</p>
             </section>
