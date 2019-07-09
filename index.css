@@ -5,6 +5,11 @@
 }
 
 body {
+    background-image: url("friends_title_treatment.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: conver;
+    background-attachment: fixed;
     max-width: 1000px;
     margin:0 auto;
     font:16px;
@@ -13,13 +18,16 @@ body {
 h1 {
     align-self: center;
     text-align: center;
-    
+    font-size:40px;
+    font-weight: bold;
 }
 
 header {
     display:flex;
     margin-top:10px;
     margin-bottom: 10px;
+    color:white;
+    background-image: linear-gradient(to left, rgba(0,0,0,0), rgba(0, 0, 0, 0.363));
 }
 
 .user-data {
@@ -51,6 +59,22 @@ main {
     border:2px solid black;
     text-align: center;
     font-size: 22px;
+    background-color:rgba(255,255,255,.7);
+}
+
+.final-view{
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    padding: 40px;
+    border:2px solid black;
+    text-align: center;
+    font-size: 22px;
+    background-color:rgba(255,255,255,.7);
+}
+
+.final-view p{
+    margin-bottom: 5px;
 }
 
 form{
@@ -61,15 +85,13 @@ form{
 .flex-container{
     display:flex;
     flex-wrap:wrap;
+    justify-content: space-between;
     width:100%;
 }
 
 .flex-container > section{
     display:flex;
-    justify-content: space-evenly;
-    width:49%;
-    margin:2px;
-    flex:1;
+    margin:4px;
 }
 
 .choice{
@@ -77,12 +99,19 @@ form{
     display:flex;
     flex-direction: row-reverse;
     align-items: center;
-    background-color: yellow;
-    height:75px;
+    width:49%;
+    height:45px;
+    margin:2px;
+    background-color:rgba(255,255,255,.7);
+}
+
+.choice:hover{
+    background-color:rgba(255,255,255,1);
 }
 
 .choice > input{
-    position:relative;
+    position:absolute;
+    left:0;
     margin-left: 10px;
     width:15px;
     height:15px;

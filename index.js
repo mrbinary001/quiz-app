@@ -1,6 +1,5 @@
     const quiz = {
         name: 'Friends',
-        logoAddress:"",
         questions:[
         {
             question:"How many babies did Phoebe carry for her brother?",
@@ -117,7 +116,9 @@
         </section>
         <form role="form" id="quiz">
         <fieldset>
-            ${displayChoices(playerStats.question)}
+            <section class="flex-container">
+                ${displayChoices(playerStats.question)}
+            </section>
         </fieldset>
         <button type="submit">Submit</button>
         </form>`);
@@ -207,7 +208,7 @@
         $('.display').html(`
             <section class="final-view">
                 <p class="display-questionInfo">Questions: ${totalNumberOfQuestions} out of ${totalNumberOfQuestions}</p>
-                <p class="display-score">Score: ${playerStats.correct/quiz.questions.length}%</p>
+                <p class="display-score">Score: ${(playerStats.correct/quiz.questions.length) * 100}%</p>
                 <p class="display-totalCorrect">Total Correct: ${playerStats.correct}</p>
                 <p class="display-totalIncorrect">Total Inccorrect: ${playerStats.incorrect}</p>
             </section>
