@@ -13,7 +13,7 @@
         },
         {
             question:"The 'Geller Cup' is a prize in which sport?",
-            choices:["Hockey", "Baskeyball", "Football", "Rugby"],
+            choices:["Hockey", "Basketball", "Football", "Rugby"],
             answerIndex: 2 
         },
         {

@@ -13,13 +13,16 @@ body {
     max-width: 1000px;
     margin:0 auto;
     font:16px;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
 
 h1 {
     align-self: center;
     text-align: center;
-    font-size:40px;
+    font-family: 'Shadows Into Light', cursive;
+    font-size:50px;
     font-weight: bold;
+    letter-spacing: 5px;
 }
 
 header {
@@ -33,6 +36,7 @@ header {
 .user-data {
     display:flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: flex-end;
     flex:1;
     flex-wrap: wrap;
@@ -58,19 +62,27 @@ main {
     padding: 40px;
     border:2px solid black;
     text-align: center;
-    font-size: 22px;
-    background-color:rgba(255,255,255,.7);
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-size: 27px;
+    background-color:rgba(255,255,255,.4);
+    background-color:rgba(78, 119, 255, 0.9);
+    background-image: linear-gradient(to right,rgb(1, 10, 39) ,rgba(6,35,24,.4));
+    color:white;
 }
 
 .final-view{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height:200px;
-    padding: 40px;
+    padding: 10px;
     border:2px solid black;
-    text-align: center;
-    font-size: 22px;
-    background-color:rgba(255,255,255,.7);
+    font-size: 26px;
+    background-color:rgba(255,255,255,.4);
+    background-color:rgba(78, 119, 255, 0.9);
+    background-image: linear-gradient(to right,rgb(1, 10, 39) ,rgba(6,35,24,.4));
+    color:white;
 }
 
 .final-view p{
@@ -85,13 +97,13 @@ form{
 .flex-container{
     display:flex;
     flex-wrap:wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     width:100%;
 }
 
 .flex-container > section{
     display:flex;
-    margin:4px;
+    margin:5px;
 }
 
 .choice{
@@ -99,14 +111,16 @@ form{
     display:flex;
     flex-direction: row-reverse;
     align-items: center;
-    width:49%;
+    width:48%;
     height:45px;
-    margin:2px;
-    background-color:rgba(255,255,255,.7);
+    background-color:rgba(255,255,255,.4);
+    background-color:rgba(1, 20, 82, 0.9);
+    color:white;
 }
 
 .choice:hover{
     background-color:rgba(255,255,255,1);
+    color:black;
 }
 
 .choice > input{
@@ -123,7 +137,7 @@ label {
     align-items: center;
     width:100%;
     height: 75px;
-    font-size:20px;
+    font-size:26px;
 }
 
 fieldset{
@@ -135,37 +149,34 @@ button{
     height:50px;
     padding:5px;
     margin:15px auto;
-    font-size: 32px;
+    font-size: 25px;
+    border:none;
+    background-color:rgba(255,255,255,1);
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+
+button:hover{
+    background-color: rgb(0, 138, 23);
+    color:white;
+    text-shadow: 2px 2px 3px black;
+    font-size: 26px;
 }
 
 .correct{
-    background-color: green;
+    background-color:rgb(0, 138, 23);
+    color:white;
 }
 
 .incorrect{
     background-color: red;
+    color:white;
 }
 
 
 @media screen and (max-width:650px){
     body{
-        font-size: 14px;
         min-width: 350px;
     }
-
-    /*form{
-        flex-direction: column;
-        width:100%;
-    }
-
-    form > section {
-        width:100%;
-        height:50px;
-    }
-
-    form > section:nth-child(even) {
-        border-left:2px solid black;
-    }*/
 
     button{
         width:100%;
@@ -188,4 +199,7 @@ button{
         align-items: center;
     }
 
+    .choice{
+        width:100%;
+    }
 }
